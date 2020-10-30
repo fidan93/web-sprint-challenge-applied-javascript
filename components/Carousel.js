@@ -22,3 +22,75 @@
     <div class="right-button"> > </div>
   </div>
 */
+function createCarousel(){
+  const arr = ["https://tk-assets.lambdaschool.com/ba687af4-3a1e-43d7-87b2-f30453264c9d_mountains.jpeg","https://tk-assets.lambdaschool.com/8aa075b0-67cf-47ce-9a7f-8cc9d754675d_computer.jpeg", "https://tk-assets.lambdaschool.com/5b7441c6-6e4b-4feb-a4ec-8dd2eb76238a_trees.jpeg","https://tk-assets.lambdaschool.com/0b770382-d0eb-4465-8bf2-692a79fcda71_turntable.jpeg"]
+  const carousel = document.createElement("div");
+  const leftBtn = document.createElement("div");
+  let image = document.createElement("img");
+  // const img1 = document.createElement("img");
+  // const img2 = document.createElement("img");
+  // const img3 = document.createElement("img");
+  // const img4 = document.createElement("img");
+ 
+  const rightBtn = document.createElement("div");
+
+  carousel.classList.add("carousel");
+  leftBtn.classList.add("left-button");
+  rightBtn.classList.add("right-button");
+
+  leftBtn.textContent = "<";
+  
+  rightBtn.textContent = ">";
+
+  carousel.appendChild(leftBtn);
+  carousel.appendChild(rightBtn);
+  carousel.appendChild(image);
+
+
+  
+
+ 
+//  console.log(image);
+ 
+// arr.forEach((link)=>{
+  
+//   image.src = link;
+  
+//  })
+ let index = 0;
+
+ function currentIndex(i){
+  
+  image.src = arr[i];
+  image.style.display = "block";
+  
+  return i;
+
+ }
+
+
+
+document.addEventListener("click",(event) =>{
+  
+  if(event.target == leftBtn){
+   index--;
+  }
+  else if(event.target == rightBtn){
+    index++;
+  }
+
+  if(index < 0){
+    index = arr.length-1;
+  }
+  else if(index > arr.length-1){
+    index = 0;
+  }
+  currentIndex(index);
+})
+  
+  return carousel;
+}
+
+const carouselCont = document.querySelector(".carousel-container");
+carouselCont.appendChild(createCarousel());
+console.log(carouselCont)
