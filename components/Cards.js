@@ -45,6 +45,10 @@ card.appendChild(author);
 author.appendChild(imgCont);
 author.appendChild(by);
 imgCont.appendChild(image);
+
+card.addEventListener('click',()=>{
+    console.log(headline.textContent)
+})
 return card;
 
 }
@@ -56,9 +60,9 @@ axios
     const cards = document.querySelector(".cards-container");
 for(let key in hline){
     const auth = hline[key];
-    console.log(auth);
+
     auth.forEach((el) => {
-console.log(el);
+
 cards.appendChild(createMarkup(el));
     })
 
